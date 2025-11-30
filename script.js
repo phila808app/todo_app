@@ -12,6 +12,7 @@ function addTask(){
         if (newtask === "") {return}
 
         createTaskElement(newtask);
+        saveTaskToLocalStorage(task);
 
         input_field.value ="";
 
@@ -24,7 +25,19 @@ addTask()
 
 function createTaskElement(task){
 
-    let new_item = document.createElement('li');
-    new_item.textContent = task
-    display_area.appendChild(new_item)
+    let li = document.createElement('li');
+    li.innerHTML = `<span id='task_ids'>${task.trim()}</span> 
+    <button type='button 'class='remove_button'>remove</button>
+    `
+
+    display_area.appendChild(li)
+
+    li.querySelector('.remove_button').addEventListener('click', ()=>{
+       li.remove();
+     })
+}
+
+
+function saveTaskToLocalStorage(task){
+
 }
